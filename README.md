@@ -112,15 +112,13 @@ WS           : [ \t\r\n]+ -> skip ;             // Espacios y saltos de línea
 * Tipos de datos: Soporta enteros, flotantes y cadenas.
 
 ## ❓ Implementación Técnica  <a name="data5"></a>
-**HERRAMIENTAS: **  
-Herramientas:
+** HERRAMIENTAS: **  
 * ANTLR4 para procesamiento de gramáticas.
 * NumPy/Pandas para análisis estadístico.
 * Scikit-learn para el modelo discriminante.
 * Matplotlib para visualización.
 
-**Componentes: **
-
+Componentes: 
 * Procesador ANTLR4 para datos estructurados.
 * Algoritmo de Fisher para discriminación de variables.
 * Módulo de recomendaciones basado en umbrales.
