@@ -102,3 +102,25 @@ ID           : [a-zA-Z_][a-zA-Z_0-9]* ;         // Identificadores (variables y 
 NUMBER       : [0-9]+ ('.' [0-9]+)? ;           // Números (enteros o decimales)
 STRING       : '"' .*? '"' ;                    // Cadenas de texto
 WS           : [ \t\r\n]+ -> skip ;             // Espacios y saltos de línea
+
+```
+#### Explicación
+* Estructura: Permite declarar variables, funciones y expresiones matemáticas/estadísticas.
+
+* Funciones clave: mean() (media) y fisher() (coeficiente de Fisher).
+
+* Tipos de datos: Soporta enteros, flotantes y cadenas.
+
+## ❓ Implementación Técnica  <a name="data5"></a>
+**HERRAMIENTAS: **  
+Herramientas:
+* ANTLR4 para procesamiento de gramáticas.
+* NumPy/Pandas para análisis estadístico.
+* Scikit-learn para el modelo discriminante.
+* Matplotlib para visualización.
+
+**Componentes: **
+
+* Procesador ANTLR4 para datos estructurados.
+* Algoritmo de Fisher para discriminación de variables.
+* Módulo de recomendaciones basado en umbrales.
