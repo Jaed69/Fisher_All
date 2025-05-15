@@ -59,25 +59,33 @@ Desarrollar un sistema de evaluación objetiva para personal constructor usando 
 ### Diseño de la Gramática  
 ```antlr
 grammar EmployeeEval;
-
 // Reglas del Parser
 program      : statement+ EOF ;
-statement    : declaration | function | expr ';' ;
+statement    : declaration
+             | function
+             | expr ';'
+             ;
 declaration  : TYPE ID '=' expr ';' ;
 function     : FUNC TYPE ID '(' paramList? ')' block ;
 paramList    : param (',' param)* ;
 param        : TYPE ID ;
-expr         : ID | NUMBER | STRING
-             | expr ('+'|'-'|'*'|'/') expr
-             | '(' expr ')'
-             | 'mean' '(' expr (',' expr)* ')'
-             | 'fisher' '(' expr (',' expr)* ')' ;
 block        : '{' statement* '}' ;
-
-// Reglas del Lexer
-TYPE         : 'int' | 'float' | 'string' ;
-FUNC         : 'func' ;
-ID           : [a-zA-Z_][a-zA-Z_0-9]* ;
-NUMBER       : [0-9]+ ('.' [0-9]+)? ;
-STRING       : '"' .*? '"' ;
-WS           : [ \t\r\n]+ -> skip ;
+expr         : ID                                // Variable
+             | NUMBER                            // Número constante
+             | STRING                            // Cadena
+             | expr '+' expr                     // Suma
+             | expr '-' expr                     // Resta
+             | expr '*' expr                     // Multiplicación
+             | expr '/' expr                     // División
+             | '(' expr ')'                      // Expresión entre paréntesis
+             | 'mean' '(' expr (',' expr)* ')'    // Media
+             | 'variance' '(' expr (',' expr)* ')' // Varianza
+             | 'fisher' '(' expr (',' expr)* ')'   // Coeficiente de Fisher
+             ;
+block        : '{' statement* '}' ;
+TYPE         : 'int' | 'float' | 'string' ;     // Tipos de datos
+FUNC         : 'func' ;                         // Función
+ID           : [a-zA-Z_][a-zA-Z_0-9]* ;         // Identificadores (variables y funciones)
+NUMBER       : [0-9]+ ('.' [0-9]+)? ;           // Números (enteros o decimales)
+STRING       : '"' .*? '"' ;                    // Cadenas de texto
+WS           : [ \t\r\n]+ -> skip ;             // Espacios y saltos de línea
